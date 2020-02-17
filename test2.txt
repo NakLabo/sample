@@ -13,3 +13,21 @@
 -> 違うブランチでpullを行えるかどうかを確認する。
 
 結果
+3-a. git checkout -b test2a --track origin/test2はできた。しかし、pushするときに問題があった。
+git push origin test2a を実行すると、リモートリポジトリに、test2aのブランチが作成されてしまった。
+git push origin test2だと、error: src refspec test2 does not match any というエラーが出た。
+git push だけだと、
+
+fatal: The upstream branch of your current branch does not match
+the name of your current branch.  To push to the upstream branch
+on the remote, use
+
+    git push origin HEAD:test2
+
+To push to the branch of the same name on the remote, use
+
+    git push origin HEAD
+
+To choose either option permanently, see push.default in 'git help config'.
+
+というメッセージが出た。なので、git push origin HEAD:test2とすると、pushできた。
