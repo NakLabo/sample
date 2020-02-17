@@ -6,7 +6,7 @@
 1. リモートリポジトリにtest2というブランチをmasterから作成。
 2. test2.txtを作成し、test2のブランチの下でadd/commitを行う。
 3-a. ローカルリポジトリにて、fetchを行い同期する。(git fetch)
-     その後、checkoutでローカルブランチを作成する。(git checkout -b test2a -track origin/test2)
+     その後、checkoutでローカルブランチを作成する。(git checkout -b test2a --track origin/test2)
 3-b. ローカルリポジトリのtestブランチにcheckoutしたまま、git pull origin test2を行う。
 
 -> ローカルブランチとリモートブランチの名前が異なっていても(test2aとorigin/test2)、同期が可能であるか確認する。
