@@ -1,0 +1,33 @@
+条件
+リモートリポジトリ: ブランチはmasterとtest。
+ローカルリポジトリ: ブランチはmasterとtest。リモート追跡ブランチには、origin/master, origin/testがいる。
+
+テスト
+1. リモートリポジトリにtest2というブランチをmasterから作成。
+2. test2.txtを作成し、test2のブランチの下でadd/commitを行う。
+3-a. ローカルリポジトリにて、fetchを行い同期する。(git fetch)
+     その後、checkoutでローカルブランチを作成する。(git checkout -b test2a --track origin/test2)
+3-b. ローカルリポジトリのtestブランチにcheckoutしたまま、git pull origin test2を行う。
+
+-> ローカルブランチとリモートブランチの名前が異なっていても(test2aとorigin/test2)、同期が可能であるか確認する。
+-> 違うブランチでpullを行えるかどうかを確認する。
+
+結果
+3-a. git checkout -b test2a --track origin/test2はできた。しかし、pushするときに問題があった。
+git push origin test2a を実行すると、リモートリポジトリに、test2aのブランチが作成されてしまった。
+git push origin test2だと、error: src refspec test2 does not match any というエラーが出た。
+git push だけだと、
+
+fatal: The upstream branch of your current branch does not match
+the name of your current branch.  To push to the upstream branch
+on the remote, use
+
+    git push origin HEAD:test2
+
+To push to the branch of the same name on the remote, use
+
+    git push origin HEAD
+
+To choose either option permanently, see push.default in 'git help config'.
+
+というメッセージが出た。なので、git push origin HEAD:test2とすると、pushできた。
