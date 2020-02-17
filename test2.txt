@@ -31,3 +31,10 @@ To push to the branch of the same name on the remote, use
 To choose either option permanently, see push.default in 'git help config'.
 
 というメッセージが出た。なので、git push origin HEAD:test2とすると、pushできた。
+また、git push origin HEADとすると、リモートにtest2aブランチが新たに作成される。(git push origin test2aと一緒)
+
+3-b. git pull origin test2を行うと、リモートのtest2の内容がtest1にマージされるようである。(git pull = git fetch + git mergeだから)
+また、マージ後の状態で、 git merge --abortしても、fatal: There is no merge to abort (MERGE_HEAD missing).と出てくる。
+
+まとめ
+面倒くさいことはしないで、普通の使い方をするべき。
