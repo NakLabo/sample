@@ -3,7 +3,7 @@
 ローカルリポジトリ: ブランチはmasterのみ。リモート追跡ブランチには、origin/masterがいる。
 
 テスト
-1. ローカルリポジトリにtestというブランチを作成。
+1. ローカルリポジトリにtestというブランチをmasterから作成。
 2. test1.txtを作成し、testのブランチの下でadd/commitを行う。
 3. testのブランチで、pushを行う。(git push origin test)
 
